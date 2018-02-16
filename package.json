@@ -1,0 +1,24 @@
+{
+  "name": "TicTacToe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "watchjs": "./node_modules/.bin/eslint app.js routes/*js",
+    "watchapp": "nodemon -e css,ejs,js,json --watch app",
+    "bundlecss": "node-sass --include-path scss public/css/main.scss > public/css/main.css",
+    "deleteNodeModules": "rimraf node_modules"
+  },
+  "author": "Suk-Be Jang",
+  "license": "MIT",
+  "dependencies": {
+    "rimraf": "^2.6.1"
+  },
+  "devDependencies": {
+    "ejs": "^2.5.7",
+    "eslint": "^4.17.0",
+    "express": "^4.16.2",
+    "node-sass": "^4.5.2",
+    "nodemon": "^1.11.0"
+  }
+}

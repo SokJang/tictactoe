@@ -1,0 +1,41 @@
+// ==========================================================================
+// Common variables
+// ==========================================================================
+
+// Color Settings
+// ==========================================================================
+// standard typography colors
+$white: #FFF;
+$purple: #8D4BC3;
+$green: #52B03B; 
+$lightgreen: #9CDEBC; 
+$lightpurple: #9694DB; // E6B3C2
+
+// border colors
+$bordercolor: $white;
+
+// background colors
+$bgBody: $white;
+$bgTable: $green;
+$bgDisplayState: $lightpurple;
+$bgButton: $lightpurple;
+
+// UI
+// ==========================================================================
+//$firstLinkColor: $grey;
+//$firstLinkColorHover: $blue;
+
+//$secondLinkColor: $white;
+//$secondLinkColorMOver: $grey;
+
+// Typography
+// ==========================================================================
+$baseFont: 'Lato', sans-serif;
+$baseFontWeight: 400;
+$baseFontSize: 100%;
+$smallFontSize: 75%;
+$bigFontSize: 125%;
+$baseLineHeight: 1.3;
+$basefontColor: $purple;
+$baseFontLight: 100;
+$baseHeadlineFont: 900;

@@ -1,0 +1,93 @@
+@import "normalize", "mixins", "typo_color", "grid", "animate";
+// base styling
+body{
+  font-family: $baseFont;
+  font-weight: $baseFontWeight;
+  font-size: $baseFontSize;
+  color: $white;
+  line-height: $baseLineHeight;
+  background: $bgBody;
+}
+p, a{
+  	font-size: 100%; 
+  	padding: 0;
+  	margin: 0;
+  	padding-bottom: 5px;
+  	color: $white;
+}
+a{
+	font-weight: $baseFontWeight;
+	text-decoration: none;
+	color: $basefontColor;
+}
+h1{
+	padding: 5px 2px 8px 2px;
+	margin-bottom: 0px;
+	color: $basefontColor;
+	width: 474px;
+	text-align: center;
+}
+h2{
+	font-weight: $baseHeadlineFont;
+	font-size: $bigFontSize;
+  color: $basefontColor;
+  margin-bottom: 5px;
+}
+.center {
+	@include flexbox;
+	@include justify-content(center);
+	@include align-items(center);
+	height: 100%;
+}
+.vertical{
+	@include flexbox;
+	@include flex-direction(column);
+	@include justify-content(center);
+	@include align-items(center);
+}
+.visible-sr{
+	width: 0;
+	height: 0;
+	position: absolute;
+	top: 0;
+	left: -99999px;
+}
+// game layout
+.container {
+	background: $lightgreen;
+	width: 100%;
+}
+table {
+  width: 474px;
+  border: 0;
+  border-spacing: 0px;
+  background: $bgTable;
+  outline: 2px solid $bordercolor;
+}
+td {
+	width: 150px;
+  height: 150px;
+  text-align: center;
+  vertical-align: middle;
+  border: 3px solid $bordercolor;
+  border-collapse: collapse;
+}
+.displayState {
+	  background: $bgDisplayState;
+    margin-top: 3px;
+    width: 460px;
+    padding: 5px;
+    padding-bottom: 10px;
+    color: $basefontColor;
+}
+button {
+	width: 50%;
+  height: 30px;
+  background: $purple;
+  color: $white;
+  font-size: 90%;
+  border-color: #9694E8 #9694E8 #9694E8;
+  border-style: solid;
+  border-width: 3px;
+  padding: 1px 7px 2px;
+}
