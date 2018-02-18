@@ -4,61 +4,62 @@
   <body>
      <div class="center">
         <main role="main" class="col-1-sm" class="center">
-            <section class="vertical">
-              <h1>Tic Tac Toe</h1>
-              <table>
-                  <caption class="visible-sr"></caption>
-                  <thead class="visible-sr">
-                    <tr>
-                      <th>Tic Tac Toe</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td data-player="blank" data-counter="0" class="">
-                        <img src="http://localhost:3000/img/transparent.gif" alt="">
-                      </td>
-                      <td data-player="blank" data-counter="0" class="">
-                        <img src="http://localhost:3000/img/transparent.gif" alt="">
-                      </td>
-                      <td data-player="blank" data-counter="0" class="">
-                        <img src="http://localhost:3000/img/transparent.gif" alt="">
-                      </td>
-                    </tr>
-                    <tr>
-                      <td data-player="blank" data-counter="0" class="">
-                        <img src="http://localhost:3000/img/transparent.gif" alt="">
-                      </td>
-                      <td data-player="blank" data-counter="0" class="">
-                        <img src="http://localhost:3000/img/transparent.gif" alt="">
-                      </td>
-                      <td data-player="blank" data-counter="0" class="">
-                        <img src="http://localhost:3000/img/transparent.gif" alt="">
-                      </td>
-                    </tr>
-                    <tr>
-                      <td data-player="blank" data-counter="0" class="">
-                        <img src="http://localhost:3000/img/transparent.gif" alt="">
-                      </td>
-                      <td data-player="blank" data-counter="0" class="">
-                        <img src="http://localhost:3000/img/transparent.gif" alt="">
-                      </td>
-                      <td data-player="blank" data-counter="0" class="">
-                        <img src="http://localhost:3000/img/transparent.gif" alt="">
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <footer class="vertical displayState">
-                  <p>
-                    Du hast gewonnen
-                  </p>
-                  <button>
-                    erneut spielen
-                  </button>
-                </footer>
-            </section>
+          <section class="vertical">
+            <h1>Tic Tac Toe</h1>
+            <table id="tictactoe">
+              <caption class="visible-sr"></caption>
+              <thead class="visible-sr">
+                  <tr>
+                    <th>Tic Tac Toe</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    <td data-player="" data-counter="" class="">
+                      <img src="http://localhost:3000/img/hogarth.jpg" alt="">
+                    </td>
+                    <td data-player="" data-counter="" class="">
+                      <img src="http://localhost:3000/img/transparent.gif" alt="">
+                    </td>
+                    <td data-player="" data-counter="" class="">
+                      <img src="http://localhost:3000/img/transparent.gif" alt="">
+                    </td>
+                </tr>
+                <tr>
+                    <td data-player="" data-counter="" class="">
+                      <img src="http://localhost:3000/img/transparent.gif" alt="">
+                    </td>
+                    <td data-player="" data-counter="" class="">
+                      <img src="http://localhost:3000/img/transparent.gif" alt="">
+                    </td>
+                    <td data-player="" data-counter="" class="">
+                      <img src="http://localhost:3000/img/transparent.gif" alt="">
+                    </td>
+                </tr>
+                <tr>
+                    <td data-player="" data-counter="" class="">
+                      <img src="http://localhost:3000/img/transparent.gif" alt="">
+                    </td>
+                    <td data-player="" data-counter="" class="">
+                      <img src="http://localhost:3000/img/transparent.gif" alt="">
+                    </td>
+                    <td data-player="" data-counter="" class="">
+                      <img src="http://localhost:3000/img/transparent.gif" alt="">
+                    </td>
+                </tr>
+              </tbody>
+            </table>
+            <footer class="vertical displayState">
+              <p>
+                Du hast gewonnen
+              </p>
+              <button>
+                erneut spielen
+              </button>
+            </footer>
+          </section>
         </main>
       </div>
+      <% include ../partials/template/jslib.ejs %>
   </body>
 </html>

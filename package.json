@@ -4,10 +4,11 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "babel": "./node_modules/.bin/babel --presets es2015 modules/* -o public/js/bundle.js",
     "watchjs": "./node_modules/.bin/eslint app.js routes/*js",
-    "watchapp": "nodemon -e css,ejs,js,json --watch app",
-    "bundlecss": "node-sass --include-path scss public/css/main.scss > public/css/main.css",
-    "deleteNodeModules": "rimraf node_modules"
+    "watchapp": "./node_modules/.bin/nodemon -e css,ejs,js,json --watch app",
+    "bundlecss": "./node_modules/.bin/node-sass --include-path scss public/css/main.scss > public/css/main.css",
+    "deleteNodeModules": "./node_modules/.bin/rimraf node_modules"
   },
   "author": "Suk-Be Jang",
   "license": "MIT",
@@ -15,10 +16,15 @@
     "rimraf": "^2.6.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.1",
+    "babel-preset-es2015": "^6.24.1",
     "ejs": "^2.5.7",
     "eslint": "^4.17.0",
     "express": "^4.16.2",
     "node-sass": "^4.5.2",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "webpack": "^3.11.0"
   }
 }
