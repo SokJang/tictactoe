@@ -1,7 +1,10 @@
+import webpack from 'webpack';
+// look into webpack config for es6 modules
+// https://stackoverflow.com/questions/31903692/how-can-i-use-es6-in-webpack-config-js
 module.exports = {
   entry: './modules/resetter.js',
   output: {
-    filename: './public/js/bundle.js'
+    filename: './public/js/bundleWP.js'
   },
   exclude: {
   	filename: [
@@ -15,7 +18,8 @@ module.exports = {
         test: /\.js$/,
         exclude: [
           /(node_modules)/,
-          /(routes)/
+          /(routes)/,
+          /(public)/
         ],
         loader: ['babel'],
         query: {

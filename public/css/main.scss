@@ -72,6 +72,11 @@ td {
   border: 3px solid $bordercolor;
   border-collapse: collapse;
 }
+img{
+  width: 140px;
+  height: 140px;
+  padding: 5px;
+}
 .displayState {
 	  background: $bgDisplayState;
     margin-top: 3px;

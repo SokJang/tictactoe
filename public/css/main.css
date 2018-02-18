@@ -128,7 +128,8 @@ sup {
  * Remove the border on images inside links in IE 10-.
  */
 img {
-  border-style: none; }
+  border-style: none;
+  padding: 0; }
 
 /**
  * Hide the overflow in IE.
@@ -2889,6 +2890,11 @@ td {
   vertical-align: middle;
   border: 3px solid #FFF;
   border-collapse: collapse; }
+
+img {
+  width: 140px;
+  height: 140px;
+  padding: 5px; }
 
 .displayState {
   background: #9694DB;

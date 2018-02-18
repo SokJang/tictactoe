@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "babel": "./node_modules/.bin/babel --presets es2015 modules/* -o public/js/bundle.js",
+    "babel": "./node_modules/.bin/babel --presets es2015 modules/tictactoe/resetter.js -o public/js/bundle.js",
     "watchjs": "./node_modules/.bin/eslint app.js routes/*js",
     "watchapp": "./node_modules/.bin/nodemon -e css,ejs,js,json --watch app",
     "bundlecss": "./node_modules/.bin/node-sass --include-path scss public/css/main.scss > public/css/main.css",
