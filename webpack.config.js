@@ -1,31 +1,32 @@
-import webpack from 'webpack';
-// look into webpack config for es6 modules
-// https://stackoverflow.com/questions/31903692/how-can-i-use-es6-in-webpack-config-js
+const webpack = require('webpack');
+const path = require('path');
+
 module.exports = {
-  entry: './modules/resetter.js',
+  entry: [
+    'babel-polyfill', './modules/tictactoe/resetter.js',
+    
+  ],
   output: {
-    filename: './public/js/bundleWP.js'
-  },
-  exclude: {
-  	filename: [
-  	  '.node_modules/*',
-  	  '.public/*'
-  	]
+    path: path.resolve(__dirname, './public/js'),
+    filename: './public/js/bundle.js'
   },
   module: {
     loaders: [
       {
         test: /\.js$/,
-        exclude: [
-          /(node_modules)/,
-          /(routes)/,
-          /(public)/
+        include: [
+          path.resolve(__dirname, "modules"),
         ],
-        loader: ['babel'],
+        loader: 'babel-loader',
         query: {
-          presets: ['es2015']
+          plugins: ['transform-runtime'],
+          presets: ['es2015'],
         }
       }
     ]
-  }
+  },
+  stats: {
+    colors: true
+  },
+  devtool: 'source-map'
 };
