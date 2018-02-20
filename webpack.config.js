@@ -1,32 +1,28 @@
-const webpack = require('webpack');
-const path = require('path');
+const webpack = require('webpack')
+const path = require('path')
 
 module.exports = {
-  entry: [
-    'babel-polyfill', './modules/tictactoe/resetter.js',
-    
-  ],
+  entry: {
+    tictactoe: path.join(__dirname, 'modules/tictactoe/tictactoe.js')
+  },
   output: {
-    path: path.resolve(__dirname, './public/js'),
-    filename: './public/js/bundle.js'
+    path: path.join(__dirname, 'public/js'),
+    filename: 'bundle.js'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        include: [
-          path.resolve(__dirname, "modules"),
-        ],
+        include: [ /modules/ ],
+        exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
-          plugins: ['transform-runtime'],
-          presets: ['es2015'],
+          presets: ['env', 'es2015']
         }
       }
     ]
   },
   stats: {
     colors: true
-  },
-  devtool: 'source-map'
-};
+  }
+}
