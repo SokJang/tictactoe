@@ -3,18 +3,30 @@ const fields = tabl.getElementsByTagName("td")
 const imgs = tabl.getElementsByTagName("img")
 const plImg = 'http://localhost:3000/img/cross.svg'
 const aiImg = 'http://localhost:3000/img/heart.svg'
+const gamewin = [
+  // winning rows
+	[0, 1, 2], 
+	[3, 4, 5],
+	[6, 7, 8],
+	// winning cols
+	[0, 3, 6],
+	[1, 4, 7],
+	[2, 5, 8],
+  // winning diagonal
+  [0, 4, 8],
+	[2, 4, 6]
+]
+
+// gamestate
+
 
 // reset
 const resetFields = () => {
   for (let i = 0; i < fields.length; i++){
+    imgs[i].src = 'http://localhost:3000/img/transparent.gif'
     fields[i].setAttribute('data-player', 'blank')
     fields[i].setAttribute('data-counter', 0)
     fields[i].setAttribute('class', 'default')
-  }
-}
-const resetImgs = () => {
-  for (let i = 0; i < imgs.length; i++){
-    imgs[i].src = 'http://localhost:3000/img/transparent.gif'
   }
 }
 // getter
@@ -63,7 +75,6 @@ let setPlayerField = () => {
       
     })
   }
-  
   
 }
 
@@ -133,7 +144,6 @@ let setAiField = () => {
 document.onreadystatechange = () => {
   if (document.readyState === 'complete') {
     resetFields()
-    resetImgs()
     setPlayerField()
   }
 }
