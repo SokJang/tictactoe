@@ -41,6 +41,7 @@ const gamestate = (getPlayedFields) => {
 	console.log(ai[2])
 	
 }
+
 // getter
 let getPlayedFields = () => {
 	let i = 0
