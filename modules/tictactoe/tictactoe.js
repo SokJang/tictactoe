@@ -5,7 +5,6 @@ const imgs = tabl.getElementsByTagName("img")
 const plImg = 'http://localhost:3000/img/cross.svg'
 const aiImg = 'http://localhost:3000/img/heart.svg'
 const gamewin = [
-  // winning rows
 	[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]
 ]
 
@@ -20,7 +19,6 @@ const resetFields = () => {
     fields[i].setAttribute('class', 'default')
   }
 }
-
 // getter
 let getPlayedFields = () => {
 	let i = 0
@@ -35,7 +33,8 @@ let getPlayedFields = () => {
     console.log(played)
   }
 }
-let getPlayerFields = () => {
+// Moves
+let getPlayerMoves = () => {
   let i = 0
   let playerFields = []
   let player = document.querySelectorAll('.ai');
@@ -44,7 +43,7 @@ let getPlayerFields = () => {
   }
   return i
 }
-let getAiFields = () => {
+let getAiMoves = () => {
   let i = 0
   let playerFields = []
   let player = document.querySelectorAll('.ai');
@@ -54,8 +53,8 @@ let getAiFields = () => {
   return i
 }
 let getMoves = () => {
-	let numPlayer = getPlayerFields()
-	let numAi = getAiFields()
+	let numPlayer = getPlayerMoves()
+	let numAi = getAiMoves()
 	return numAi + numPlayer
 }
 // setter
@@ -72,8 +71,6 @@ let setPlayerField = () => {
         this.setAttribute('class', 'player')
 
         getPlayedFields()
-
-        //console.log(getMoves())
 
         if(getMoves()==9){
   	      console.log('game ended by player')
