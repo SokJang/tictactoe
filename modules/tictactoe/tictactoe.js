@@ -5,7 +5,17 @@ const imgs = tabl.getElementsByTagName("img")
 const plImg = 'http://localhost:3000/img/cross.svg'
 const aiImg = 'http://localhost:3000/img/heart.svg'
 const gamewin = [
-	[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]
+	// rows
+	[0, 1, 2], // gamewin[0]
+	[3, 4, 5], // gamewin[1]
+	[6, 7, 8], // gamewin[2]
+	// cols 
+	[0, 3, 6], 
+	[1, 4, 7], 
+	[2, 5, 8],
+	// diagonal 
+	[0, 4, 8], 
+	[2, 4, 6]
 ]
 
 // reset
@@ -19,29 +29,34 @@ const resetFields = () => {
 }
 const gamestate = (getPlayedFields) => {
 	let played = getPlayedFields() // returns array with setted fields
-  
-  let ai = [
+  let i = 0
+  let player = [
     [], [], []
   ]
- 
-  let i = 0
+  // adjust datastructure
+  player[0] = played.slice(0,3)
+  player[1] = played.slice(3,6)
+  player[2] = played.slice(6,9)
 
-  ai[0] = played.slice(0,3)
-  // array.filter makes filtered array
-  //ai[0] = ai[0].filter(word => word == 'ai')
-  ai[1] = played.slice(3,6)
-  //ai[1] = ai[1].filter(word => word == 'ai')
-  ai[2] = played.slice(6,9)
-  //ai[2] = ai[2].filter(word => word == 'ai')
-	
-	console.log(played)
-	console.log(ai)
-	console.log(ai[0])
-	console.log(ai[1])
-	console.log(ai[2])
-	
+  // gamelogic
+  for(i; i < player.length; i++){
+  	// filter for player matches in array
+  	player[i] = player[i].filter(word => word == 'player')
+  	if(player[i].length == 3){
+  		console.log('player row wins')
+  	}
+  	// filter for position
+
+  }
+  
+  /*
+  console.log(played)
+	console.log(player)
+	console.log(player[0])
+	console.log(player[1])
+	console.log(player[2])
+	*/
 }
-
 // getter
 let getPlayedFields = () => {
 	let i = 0
