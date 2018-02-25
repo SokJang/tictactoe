@@ -6,9 +6,9 @@ const plImg = 'http://localhost:3000/img/cross.svg'
 const aiImg = 'http://localhost:3000/img/heart.svg'
 const gamewin = [
 	// rows
-	[0, 1, 2], // gamewin[0]
-	[3, 4, 5], // gamewin[1]
-	[6, 7, 8], // gamewin[2]
+	[0, 1, 2], 
+	[3, 4, 5], 
+	[6, 7, 8], 
 	// cols 
 	[0, 3, 6], 
 	[1, 4, 7], 
@@ -27,35 +27,73 @@ const resetFields = () => {
     fields[i].setAttribute('class', 'default')
   }
 }
-const gamestate = (getPlayedFields) => {
+const gamestatePlayer = (getPlayedFields) => {
 	let played = getPlayedFields() // returns array with setted fields
-  let i = 0
-  let player = [
-    [], [], []
-  ]
-  // adjust datastructure
-  player[0] = played.slice(0,3)
-  player[1] = played.slice(3,6)
-  player[2] = played.slice(6,9)
-
-  // gamelogic
-  for(i; i < player.length; i++){
-  	// filter for player matches in array
-  	player[i] = player[i].filter(word => word == 'player')
-  	if(player[i].length == 3){
-  		console.log('player row wins')
-  	}
-  	// filter for position
-
-  }
+  let elPlayer = 'player'
   
-  /*
-  console.log(played)
-	console.log(player)
-	console.log(player[0])
-	console.log(player[1])
-	console.log(player[2])
-	*/
+  switch(true) {
+    case (played.indexOf(elPlayer) == 0) && (played.indexOf(elPlayer, 1) == 1) && (played.indexOf(elPlayer, 2) == 2):
+      return true
+      break
+    case (played.indexOf(elPlayer, 3) == 3) && (played.indexOf(elPlayer, 4) == 4) && (played.indexOf(elPlayer, 5) == 5):
+      return true
+      break
+    case (played.indexOf(elPlayer, 6) == 6) && (played.indexOf(elPlayer, 7) == 7) && (played.indexOf(elPlayer, 8) == 8):
+      return true
+      break
+    case (played.indexOf(elPlayer) == 0) && (played.indexOf(elPlayer, 3) == 3) && (played.indexOf(elPlayer, 6) == 6):
+      return true
+      break
+    case (played.indexOf(elPlayer, 1) == 1) && (played.indexOf(elPlayer, 4) == 4) && (played.indexOf(elPlayer, 7) == 7):
+      return true
+      break
+    case (played.indexOf(elPlayer, 2) == 2) && (played.indexOf(elPlayer, 5) == 5) && (played.indexOf(elPlayer, 8) == 8):
+      return true
+      break
+    case (played.indexOf(elPlayer) == 0) && (played.indexOf(elPlayer, 4) == 4) && (played.indexOf(elPlayer, 8) == 8):
+      return true
+      break
+    case (played.indexOf(elPlayer, 2) == 2) && (played.indexOf(elPlayer, 4) == 4) && (played.indexOf(elPlayer, 6) == 6):
+  		return true
+  		break
+  	default:
+  	  //console.log('run gameEval by player')
+  	  break
+  }
+}
+const gamestateAi = (getPlayedFields) => {
+	let played = getPlayedFields() // returns array with setted fields
+  let elAi = 'ai'
+
+  switch(true) {
+    case (played.indexOf(elAi) == 0) && (played.indexOf(elAi, 1) == 1) && (played.indexOf(elAi, 2) == 2):
+      return true
+      break
+    case (played.indexOf(elAi, 3) == 3) && (played.indexOf(elAi, 4) == 4) && (played.indexOf(elAi, 5) == 5):
+      console.log('second row ai wins')
+      break
+    case (played.indexOf(elAi, 6) == 6) && (played.indexOf(elAi, 7) == 7) && (played.indexOf(elAi, 8) == 8):
+      console.log('third row ai wins')
+      break
+    case (played.indexOf(elAi) == 0) && (played.indexOf(elAi, 3) == 3) && (played.indexOf(elAi, 6) == 6):
+      console.log('first col ai wins')
+      break
+    case (played.indexOf(elAi, 1) == 1) && (played.indexOf(elAi, 4) == 4) && (played.indexOf(elAi, 7) == 7):
+      console.log('second col ai wins')
+      break
+    case (played.indexOf(elAi, 2) == 2) && (played.indexOf(elAi, 5) == 5) && (played.indexOf(elAi, 8) == 8):
+      console.log('third col ai wins')
+      break
+    case (played.indexOf(elAi) == 0) && (played.indexOf(elAi, 4) == 4) && (played.indexOf(elAi, 8) == 8):
+      console.log('diagonal ai wins')
+      break
+    case (played.indexOf(elAi, 2) == 2) && (played.indexOf(elAi, 4) == 4) && (played.indexOf(elAi, 6) == 6):
+  		console.log('diagonal ai wins')
+  		break
+  	default:
+  	  //console.log('run gameEval by ai')
+  	  break
+  }
 }
 // getter
 let getPlayedFields = () => {
@@ -93,7 +131,8 @@ let getAiMoves = () => {
 let getMoves = () => {
 	let numPlayer = getPlayerMoves()
 	let numAi = getAiMoves()
-	return numAi + numPlayer
+	if((fields.length-1) == (numAi+numPlayer))
+	  return numAi + numPlayer
 }
 // setter
 let setPlayerField = () => {
@@ -108,11 +147,17 @@ let setPlayerField = () => {
         this.setAttribute('data-counter', 1)
         this.setAttribute('class', 'player')
 
-        if(getMoves()==9){
-  	      console.log('game ended by player')
-  	      gamestate(getPlayedFields)
-        } else {
-          setAiField()
+        if(gamestatePlayer(getPlayedFields)==true){
+        	console.log('player won game')
+        } 
+        if (gamestateAi(getPlayedFields)==true){
+        	console.log('ai won game')
+        }
+        else if(getMoves()==8){
+  	      console.log('draw')
+        }
+        else {
+        	setAiField()
         }
         
     	}
@@ -129,67 +174,69 @@ let setAiField = () => {
 	    fields[0].setAttribute('class', 'ai')
 	    fields[0].setAttribute('data-player', 'ai')
 	    fields[0].setAttribute('data-counter', 1)
-	    gamestate(getPlayedFields)
+	    gamestateAi(getPlayedFields)
 	    break
+	  case fields[0].classList[0] == 'ai' && fields[0].classList[0] == 'player':
+	    gamestateAi(getPlayedFields)
 	  case fields[1].classList[0] !== 'ai' && fields[1].classList[0] !== 'player':
 	    imgs[1].setAttribute('src', aiImg)
 	    fields[1].setAttribute('class', 'ai')
 	    fields[1].setAttribute('data-player', 'ai')
 	    fields[1].setAttribute('data-counter', 1)
-	    gamestate(getPlayedFields)
+	    gamestateAi(getPlayedFields)
 	    break
 	  case fields[2].classList[0] !== 'ai' && fields[2].classList[0] !== 'player':
 	    imgs[2].setAttribute('src', aiImg)
 	    fields[2].setAttribute('class', 'ai')
 	    fields[2].setAttribute('data-player', 'ai')
 	    fields[2].setAttribute('data-counter', 1)
-	    gamestate(getPlayedFields)
+	    gamestateAi(getPlayedFields)
 	    break
 	  case fields[3].classList[0] !== 'ai' && fields[3].classList[0] !== 'player':
 	    imgs[3].setAttribute('src', aiImg)
 	    fields[3].setAttribute('class', 'ai')
 	    fields[3].setAttribute('data-player', 'ai')
 	    fields[3].setAttribute('data-counter', 1)
-	    gamestate(getPlayedFields)
+	    gamestateAi(getPlayedFields)
 	    break
 	  case fields[4].classList[0] !== 'ai' && fields[4].classList[0] !== 'player':
 	    imgs[4].setAttribute('src', aiImg)
 	    fields[4].setAttribute('class', 'ai')
 	    fields[4].setAttribute('data-player', 'ai')
 	    fields[4].setAttribute('data-counter', 1)
-	    gamestate(getPlayedFields)
+	    gamestateAi(getPlayedFields)
 	    break
 	  case fields[5].classList[0] !== 'ai' && fields[5].classList[0] !== 'player':
 	    imgs[5].setAttribute('src', aiImg)
 	    fields[5].setAttribute('class', 'ai')
 	    fields[5].setAttribute('data-player', 'ai')
 	    fields[5].setAttribute('data-counter', 1)
-	    gamestate(getPlayedFields)
+	    gamestateAi(getPlayedFields)
 	    break
 	  case fields[6].classList[0] !== 'ai' && fields[6].classList[0] !== 'player':
 	    imgs[6].setAttribute('src', aiImg)
 	    fields[6].setAttribute('class', 'ai')
 	    fields[6].setAttribute('data-player', 'ai')
 	    fields[6].setAttribute('data-counter', 1)
-	    gamestate(getPlayedFields)
+	    gamestateAi(getPlayedFields)
 	    break
 	  case fields[7].classList[0] !== 'ai' && fields[7].classList[0] !== 'player':
 	    imgs[7].setAttribute('src', aiImg)
 	    fields[7].setAttribute('class', 'ai')
 	    fields[7].setAttribute('data-player', 'ai')
 	    fields[7].setAttribute('data-counter', 1)
-	    gamestate(getPlayedFields)
+	    gamestateAi(getPlayedFields)
 	    break
 	  case fields[8].classList[0] !== 'ai' && fields[8].classList[0] !== 'player':
 	    imgs[8].setAttribute('src', aiImg)
 	    fields[8].setAttribute('class', 'ai')
 	    fields[8].setAttribute('data-player', 'ai')
 	    fields[8].setAttribute('data-counter', 1)
-	    gamestate(getPlayedFields)
+	    gamestateAi(getPlayedFields)
 	    break
 	  default:
-	    gamestate(getPlayedFields)
-	    console.log('run gameEval by ai')
+	    //gamestateAi(getPlayedFields)
+	    //console.log('run gameEval by ai')
 	    break
   }
   
